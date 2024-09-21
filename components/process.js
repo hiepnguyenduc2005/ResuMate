@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import styles from './components.module.css';
 
 export default function Process({handleProcessed}) {

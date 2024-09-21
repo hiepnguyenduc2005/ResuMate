@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './components.module.css';
 
-export default function Resume() {
-    const [resume, setResume] = useState(null);
-    
+export default function Resume({resume, setResume, setProcessed}) {
+
     const handleChange = (e) => {
         setResume(e.target.files[0]);
+        setProcessed(false);
     }
     
     return (

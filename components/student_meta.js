@@ -1,10 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import styles from './components.module.css';
 
-export default function StudentMeta() {
-    const [studentMeta, setStudentMeta] = useState({'gradYear': '', 'major': '', 'race': '', 'gender': '', 
-        'sponsor': ''});
+export default function StudentMeta({studentMeta, setStudentMeta}) {
     const handleChange = (e) => {
         const {name, value} = e.target;
         setStudentMeta(prevState => ({

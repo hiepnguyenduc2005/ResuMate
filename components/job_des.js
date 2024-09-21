@@ -1,9 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import styles from './components.module.css';
 
-export default function JobDes() {
-    const [jobDes, setJobDes] = useState('');
+export default function JobDes({jobDes, setJobDes}) {
 
     const handleChange = (e) => {
         setJobDes(e.target.value);
