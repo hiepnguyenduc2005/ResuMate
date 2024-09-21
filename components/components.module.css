@@ -6,7 +6,7 @@
 .form input[type="text"],
 .form select,
 .form textarea {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc68;;
   border-radius: 4px;
   padding: 10px;
   width: 100%;
@@ -22,7 +22,7 @@
   }
   
   .form label[for="resume"] {
-    background-color: #ccc;
+    background-color: #cccccc68;
     padding: 10px 20px; 
     border: none;
     border-radius: 4px; 
@@ -36,7 +36,8 @@
   }
 
   .form input[type="button"] {
-    background-color: #ccc;
+    background-color: #cccccc68;
+    color: #000;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -47,6 +48,7 @@
     display: inline-block;
     width: auto;
   }
+
 
   .p {
     text-align: left;
