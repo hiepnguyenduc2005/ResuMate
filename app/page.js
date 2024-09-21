@@ -6,8 +6,15 @@ import JobMeta from "../components/job_meta.js";
 import StudentMeta from "../components/student_meta.js";
 import JobDes from "../components/job_des.js";
 import Resume from "../components/resume.js";
+import Feedback from "../components/feedback.js";
+import Chatbot from "../components/chatbot.js";
+import Process from "../components/process.js";
+import React from "react";
+import { useState } from "react";
 
 export default function Home() {
+  const [processed, setProcessed] = useState(false);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -20,6 +27,16 @@ export default function Home() {
           <JobDes />
           <Resume />
         </div>
+        {processed ? (
+        <div className={styles.row}>
+          <Feedback />
+          <Chatbot />
+        </div>
+        ) : (
+          <div className={styles.row0}>
+            <Process handleProcessed={setProcessed}/>
+          </div>
+        )}
       </main>
       <footer className={styles.footer}>
         <a

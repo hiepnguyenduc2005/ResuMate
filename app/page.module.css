@@ -168,9 +168,17 @@ a.secondary {
 .h1 {
   text-align: center;
 }
+
 .row {
   display: grid;
   grid-template-columns: 50% 50%;
   width: 100%;
   text-align: center;
 }
+
+.row0 {
+  display: grid;
+  width: 100%;
+  text-align: center;
+}
+

@@ -14,7 +14,7 @@ export default function Resume() {
             <br />
             <form className={styles.form}>
                 <input type="file" id="resume" name="resume" accept=".pdf" onChange={handleChange}/>
-                <label htmlFor="resume">Choose File</label> 
+                <label htmlFor="resume">Choose a File</label> 
                 <br />
                 <span>{resume ? resume.name : "No file chosen"}</span>
             </form>
