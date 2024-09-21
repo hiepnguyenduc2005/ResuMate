@@ -25,7 +25,7 @@ export async function POST(req){
 
         const data = await req.text();
         const completion = await openai.chat.completions.create({
-            model: "llama3.1-8b",
+            model: "llama3.1-70b",
             //model: "meta-llama/llama-3.1-8b-instruct:free",
             messages: [
                 {role: "system", content: systemPrompt},
