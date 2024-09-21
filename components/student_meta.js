@@ -7,7 +7,7 @@ export default function StudentMeta() {
         'sponsor': ''});
     const handleChange = (e) => {
         const {name, value} = e.target;
-        setJobMeta(prevState => ({
+        setStudentMeta(prevState => ({
             ...prevState,
             [name]: value
         }));
