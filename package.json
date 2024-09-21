@@ -2,6 +2,7 @@
   "name": "resumate",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,6 +12,8 @@
   "dependencies": {
     "next": "14.2.13",
     "openai": "^4.63.0",
+    "pdf-parse": "^1.1.1",
+    "pdfreader": "^3.0.5",
     "react": "^18",
     "react-dom": "^18"
   },
