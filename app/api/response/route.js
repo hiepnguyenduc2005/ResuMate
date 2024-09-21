@@ -47,7 +47,7 @@ export async function POST(req){
         })
 
         console.log(completion.choices[0].message.content)
-        return new NextResponse("success", {status: 200})
+        return new NextResponse(JSON.stringify(completion.choices[0].message.content), {status: 200})
 
     } catch (error) {
         console.log(error)

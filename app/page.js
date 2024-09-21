@@ -11,6 +11,7 @@ import Chatbot from "../components/chatbot.js";
 import Process from "../components/process.js";
 import React from "react";
 import { useState } from "react";
+import jobCrit from "../mock_db/job_title.json"
 
 export default function Home() {
   const [processed, setProcessed] = useState(false);
@@ -22,6 +23,41 @@ export default function Home() {
   const [feedback, setFeedback] = useState('');
   const [chatbot, setChatbot] = useState('');
 
+  const generate = async () => {
+    try {
+  
+      let user_data = "Here is the biographical information of the user " + JSON.stringify(studentMeta);
+      let job_data = "Here is the job information " + JSON.stringify(jobMeta) + "\n and " + jobDes;
+      let job_criteria = "Here is the job criteria: " + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
+      let resume_data = "Resume data: " + resume.name;
+    
+      const myPrompt = `${user_data}\n${job_data}\n${job_criteria}\n${resume_data}`;
+  
+      console.log(jobMeta.jobType)
+      console.log(jobCrit)
+      console.log("Generated Prompt:", myPrompt);
+  
+      const response = await fetch("api/response", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: myPrompt,
+      });
+  
+      
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }
+  
+      
+      const data = await response.json(); 
+      setFeedback(data); 
+  
+    } catch (error) {
+      
+      console.error("Error during API call:", error.message);
+    }
+  };
+  
 
   return (
     <div className={styles.page}>
@@ -42,7 +78,7 @@ export default function Home() {
         </div>
         ) : (
           <div className={styles.row0}>
-            <Process handleProcessed={setProcessed}/>
+            <Process handleProcessed={setProcessed} generate={generate}/>
           </div>
         )}
       </main>

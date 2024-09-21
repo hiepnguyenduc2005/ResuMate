@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './components.module.css';
 
-export default function Process({handleProcessed}) {
+export default function Process({handleProcessed, generate}) {
     const handleClick = () => {
         handleProcessed(true);
+        generate();
     }
 
     return (
