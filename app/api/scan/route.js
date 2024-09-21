@@ -1,22 +1,39 @@
-import { NextResponse } from "next/server";
-import fs from "fs"
-import pdf from "pdf-parse"
+import formidable from 'formidable';
+import fs from 'fs';
+import pdfParse from 'pdf-parse';
 
-export const runtime = 'nodejs';
+// This sets the config for form-data parsing
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
-export async function POST(req){
-    try {
-        const data = await req.text()
-        
-        let dataBuffer = fs.readFileSync(data);
-        pdf(dataBuffer).then(function(data) {
-            // `data.text` contains the text content of the PDF file
-            let pdfText = data.text;
-            console.log(pdfText);
-        })
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    const form = new formidable.IncomingForm();
 
-        return new NextResponse("Parsed Successfully", {status: 200});
-    } catch (error) {
-        return new NextResponse(error.message, {status:500});
-    }
+    form.parse(req, async (err, fields, files) => {
+      if (err) {
+        res.status(500).json({ error: 'File upload error' });
+        return;
+      }
+
+      const file = files.pdf;
+
+      // Read the uploaded file
+      const fileData = fs.readFileSync(file.filepath);
+
+      // Parse the PDF and extract text
+      try {
+        const pdfData = await pdfParse(fileData);
+        const text = pdfData.text;
+        res.status(200).json({ text });
+      } catch (error) {
+        res.status(500).json({ error: 'Error parsing PDF' });
+      }
+    });
+  } else {
+    res.status(405).json({ message: 'Method not allowed' });
+  }
 }
