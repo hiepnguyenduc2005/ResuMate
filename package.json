@@ -9,9 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "14.2.13",
+    "openai": "^4.63.0",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.13"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "eslint": "^8",
