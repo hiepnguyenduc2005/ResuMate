@@ -3,15 +3,26 @@ import OpenAI from "openai";
 
 
 
-const systemPrompt = `Hello, I’ve attached my resume and would love to get detailed feedback on it. Could you please review it and provide insights on how I can improve it in the following areas:
+const systemPrompt = `You will receive a resume text file for a tech position and metadata about biographics of an application . Your task is to enhance it by:
 
-Content: Are my skills, experience, and achievements clearly highlighted and aligned with the roles I am targeting?
-Clarity and Structure: Is the resume easy to read, well-structured, and concise? Are there any sections that feel cluttered or unclear?
-Keywords: Does my resume include the right keywords for applicant tracking systems (ATS) for software development or backend roles?
-Achievements: Do I need to improve how I’ve described my accomplishments (e.g., using numbers, action verbs, or stronger language)?
-Formatting: Is the layout, font, and style professional and visually appealing?
-Tailoring: How well is my resume tailored to the job I’m applying for? Any tips on customizing it for specific roles or industries would be appreciated.
-Feel free to point out any additional areas I might have missed or general recommendations for improvement. Thank you!`
+Checking for grammar and spelling
+Ensuring alignment with specific job requirements, focusing on relevant technical skills and experiences.
+Adding impactful action words to effectively showcase the candidate’s contributions.
+Enhancing formatting for clarity, consistency, and readability, making it visually appealing.
+Highlighting relevant technical skills, tools, and certifications that match the role.
+Showcasing key projects and achievements with specific technologies and outcomes.
+Tailoring the summary or objective to reflect the candidate’s unique value and fit for the position.
+Ensuring the CV has a professional-sounding email, and links to professional profiles or portfolios
+Keep the length of the resume in 1 or 2 pages,  Use professional fonts like Arial, Calibri, or Times New Roman 
+Ensuring that the text is in pdf file, avoiding tables, columns, and complex layouts
+The information should be in the form of bullet points, and start with strong action verbs
+
+For specific positions that the user is applying for, make sure their resume aligns with the requirements of the job. I will also provide you with the specific job
+criteria for that position.
+
+And also provide the compatibility of the candidate with the the Job Description information
+
+`
 
 export async function POST(req){
     try {
