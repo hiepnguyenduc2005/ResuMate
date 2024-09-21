@@ -1,0 +1,16 @@
+.form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form input[type="text"],
+.form select,
+.form textarea {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+  font-family: Arial, sans-serif; 
+  font-size: 14px; 
+  margin-bottom: 10px;
+}
