@@ -1,50 +1,42 @@
+"use client"
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import JobMeta from "../components/job_meta.js";
+import StudentMeta from "../components/student_meta.js";
+import JobDes from "../components/job_des.js";
+import Resume from "../components/resume.js";
+import Feedback from "../components/feedback.js";
+import Chatbot from "../components/chatbot.js";
+import Process from "../components/process.js";
+import React from "react";
+import { useState } from "react";
 
 export default function Home() {
+  const [processed, setProcessed] = useState(false);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+        <h1 className={styles.h1}>ResuMate</h1>
+        <div className={styles.row}>
+          <JobMeta />
+          <StudentMeta />
         </div>
+        <div className={styles.row}>
+          <JobDes />
+          <Resume />
+        </div>
+        {processed ? (
+        <div className={styles.row}>
+          <Feedback />
+          <Chatbot />
+        </div>
+        ) : (
+          <div className={styles.row0}>
+            <Process handleProcessed={setProcessed}/>
+          </div>
+        )}
       </main>
       <footer className={styles.footer}>
         <a
