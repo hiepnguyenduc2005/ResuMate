@@ -23,6 +23,13 @@ export default function Home() {
   const [feedback, setFeedback] = useState('');
   const [chatbot, setChatbot] = useState('');
 
+  const formatData = (rawFeedback) => {
+    // Simple formatting example - you can improve it based on your needs
+    return rawFeedback
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+      .replace(/\n/g, '<br />'); // Line breaks
+  };
+
   const generate = async () => {
     try {
   
@@ -33,9 +40,9 @@ export default function Home() {
     
       const myPrompt = `${user_data}\n${job_data}\n${job_criteria}\n${resume_data}`;
   
-      console.log(jobMeta.jobType)
-      console.log(jobCrit)
-      console.log("Generated Prompt:", myPrompt);
+      // console.log(jobMeta.jobType)
+      // console.log(jobCrit)
+      // console.log("Generated Prompt:", myPrompt);
   
       const response = await fetch("api/response", {
         method: "POST",
@@ -50,7 +57,7 @@ export default function Home() {
   
       
       const data = await response.json(); 
-      setFeedback(data); 
+      setFeedback(formatData(data)); 
   
     } catch (error) {
       

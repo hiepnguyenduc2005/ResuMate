@@ -11,10 +11,7 @@ export default function Feedback({feedback, setFeedback}) {
         <div>
         <h2>Feedback</h2>
         <br/>
-        <form className={styles.form}>
-            <textarea rows="10" cols="50" name="feedback" placeholder="Feedback" value={feedback} onChange={handleChange}/>      
-            <br/>
-        </form>
+        <p dangerouslySetInnerHTML={{ __html: feedback }} className={styles.p}></p>
         </div>
     );
     }
