@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image";
 import styles from "./page.module.css";
 import JobMeta from "../components/job_meta.js";
 import StudentMeta from "../components/student_meta.js";
