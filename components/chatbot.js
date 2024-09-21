@@ -1,12 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
 import styles from './components.module.css';
 
-export default function Chatbot() {
-    const [jobDes, setJobDes] = useState('');
+export default function Chatbot({chatbot, setChatbot}) {
 
     const handleChange = (e) => {
-        setJobDes(e.target.value);
+        setChatbot(e.target.value);
     }
 
     return (
@@ -14,7 +12,7 @@ export default function Chatbot() {
         <h2>Chatbot</h2>
         <br/>
         <form className={styles.form}>
-            <textarea rows="10" cols="50" name="jobDes" placeholder="Job Description" value={jobDes} onChange={handleChange}/>      
+            <textarea rows="10" cols="50" name="jobDes" placeholder="Chatbot" value={chatbot} onChange={handleChange}/>      
             <br/>
         </form>
         </div>

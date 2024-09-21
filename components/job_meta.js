@@ -1,9 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import styles from './components.module.css';
 
-export default function JobMeta() {
-    const [jobMeta, setJobMeta] = useState({'jobTitle': '', 'jobType': ''});
+export default function JobMeta({jobMeta, setJobMeta}) {
 
     const handleChange = (e) => {
         const {name, value} = e.target;
