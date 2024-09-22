@@ -2,7 +2,7 @@
 
 ![cat](https://github.com/user-attachments/assets/08be0fbe-c5d7-492e-b0bd-260a97eb73fe)
 
-ResuMate is an AI-powered web application that analyzes resumes for technology related jobs, providing personalized eligibility, compatibility assessments and improvement suggestions for undergraduate students seeking for internship and new grad roles.
+ResuMate is an AI-powered web application that analyzes resumes for technology related jobs, providing personalized eligibility and compatibility assessments and improvement suggestions for undergraduate students seeking for internship and new grad roles.
 
 ## Technologies Used
 
@@ -10,6 +10,7 @@ ResuMate is an AI-powered web application that analyzes resumes for technology r
 - **Next.js**: React framework for server-side rendering
 - **Pyodide**: Python in the browser
 - **CSS Modules**: For styling components
+- **Cerebras API (Llama3 model)**: AI API for generating personalized feedback recommendations based on Large Language Models (LLMs)
 
 ## Installation
 
