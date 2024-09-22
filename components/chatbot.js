@@ -1,5 +1,4 @@
-'use client'
-
+"use client"
 import { Box, Button, Stack, TextField, ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import { useState, useRef, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
@@ -7,13 +6,18 @@ import ReactMarkdown from 'react-markdown'
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#d2b48c', // beige color
+      main: '#000000', // black color for primary
     },
     secondary: {
-      main: '#8b4513', // darker shade for contrast
+      main: '#FFFFFF', // white color for secondary
     },
     background: {
-      default: '#f5f5dc', // light beige background
+      default: '#000000', // black background
+      paper: '#FFFFFF', // white background for boxes
+    },
+    text: {
+      primary: '#FFFFFF', // white text
+      secondary: '#000000', // black text for contrast
     },
   },
   components: {
@@ -21,7 +25,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: '8px',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 4px 8px rgba(255, 255, 255, 0.1)', // adjust shadow for better contrast in black and white
         },
       },
     },
@@ -122,12 +126,12 @@ export default function Chatbot({chatbot, setChatbot, myPrompt, feedback}) {
         alignItems="center"
         bgcolor="background.default"
       >
-        <h2>Your ResuMate</h2>
+        <h2 style={{ color: theme.palette.text.primary }}>Your ResuMate</h2>
         <Stack
           direction={'column'}
           width="500px"
           height="700px"
-          bgcolor="white"
+          bgcolor="background.paper"
           border="1px solid"
           borderColor="primary.main"
           p={2}
@@ -154,7 +158,7 @@ export default function Chatbot({chatbot, setChatbot, myPrompt, feedback}) {
                       ? 'primary.main'
                       : 'secondary.main'
                   }
-                  color="white"
+                  color={message.role === 'assistant' ? 'white' : 'black'}
                   borderRadius={10}
                   p={2}
                   maxWidth="75%"
@@ -177,13 +181,13 @@ export default function Chatbot({chatbot, setChatbot, myPrompt, feedback}) {
               onKeyPress={handleKeyPress}
               disabled={isLoading}
               variant="outlined"
-              sx={{ bgcolor: 'white', borderRadius: 1 }}
+              sx={{ bgcolor: 'background.paper', borderRadius: 1 }}
             />
             <Button
               variant="contained"
               onClick={sendMessage}
               disabled={isLoading}
-              sx={{ bgcolor: isLoading ? 'grey' : 'secondary.main' }}
+              sx={{ bgcolor: isLoading ? 'grey' : 'primary.main' }}
             >
               {isLoading ? 'Sending...' : 'Send'}
             </Button>

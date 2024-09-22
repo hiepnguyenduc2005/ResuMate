@@ -188,6 +188,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1 className={styles.h1}>ResuMate</h1>
+        
         <div className={styles.row}>
           <JobMeta jobMeta={jobMeta} setJobMeta={setJobMeta} />
           <StudentMeta studentMeta={studentMeta} setStudentMeta={setStudentMeta} />
