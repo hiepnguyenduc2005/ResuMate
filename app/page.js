@@ -153,17 +153,18 @@ export default function Home() {
       let job_data = "2. Here is the job information:\nTitle: " + jobMeta.jobTitle + "\nDetailed information: " + JSON.stringify(jobMeta) + "\n and " + jobDes;
       let job_criteria = "3. Here is the job criteria: " + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
       let resume_data = "4. Here is the applicant's resume data: " + resumeText;
-    
-      setMyPrompt(`${user_data}\n\n${job_data}\n\n${job_criteria}\n\n${resume_data}`);
+      
+      const newPrompt = `${user_data}\n\n${job_data}\n\n${job_criteria}\n\n${resume_data}`
+      setMyPrompt(newPrompt);
   
       // console.log(jobMeta.jobType)
       // console.log(jobCrit)
-      console.log(myPrompt);
+      console.log(newPrompt);
   
       const response = await fetch("api/response", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: myPrompt,
+        body: newPrompt,
       });
   
       
