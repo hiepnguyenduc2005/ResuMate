@@ -182,3 +182,9 @@ a.secondary {
   text-align: center;
 }
 
+.form {
+  width: 80%;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+

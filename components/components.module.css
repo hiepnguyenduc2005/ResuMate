@@ -34,10 +34,8 @@
     width: auto; 
     margin-bottom: 10px;
   }
-
-  .form input[type="button"] {
+.button {
     background-color: #cccccc68;
-    color: #000;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;

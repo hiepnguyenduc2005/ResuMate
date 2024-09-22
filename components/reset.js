@@ -15,10 +15,6 @@ export default function Reset ({ setJobMeta, setStudentMeta, setJobDes, setResum
     
 
     return (
-        <div>
-            <form className={styles.form}>
-                <input type="button" variant="contained" color="primary" onClick={handleClick} value="Reset All"/>
-            </form>
-        </div>
+        <input className={styles.button} type="button" variant="contained" color="primary" onClick={handleClick} value="Reset All"/>
     );
     }

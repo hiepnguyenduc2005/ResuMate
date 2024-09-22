@@ -199,8 +199,17 @@ export default function Home() {
         </div>
 
         <div className={styles.row0}>
-          <Reset setJobMeta={setJobMeta} setProcessed={setProcessed} setStudentMeta={setStudentMeta}
-            setJobDes={setJobDes} setResume={setResume} setFeedback={setFeedback} setMyPrompt={setMyPrompt} />
+          <form className={styles.form}>
+            <Reset setJobMeta={setJobMeta} setProcessed={setProcessed} setStudentMeta={setStudentMeta}
+              setJobDes={setJobDes} setResume={setResume} setFeedback={setFeedback} setMyPrompt={setMyPrompt} />
+              
+            {!processed ? ( 
+              <>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Process generate={generate} />
+              </>        
+            ): null}
+          </form>
         </div>
         
         {processed ? (
@@ -209,9 +218,7 @@ export default function Home() {
           <Chatbot chatbot={chatbot} setChatbot={setChatbot} myPrompt={myPrompt} feedback={feedback}/>
         </div>
         ) : (
-          <div className={styles.row0}>
-            <Process generate={generate} />
-          </div>
+          null
         )}
       </main>
       <footer className={styles.footer}>
