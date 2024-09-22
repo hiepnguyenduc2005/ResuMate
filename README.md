@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ResuMate
 
-## Getting Started
+![cat](https://github.com/user-attachments/assets/08be0fbe-c5d7-492e-b0bd-260a97eb73fe)
 
-First, run the development server:
+ResuMate is an AI-powered web application that analyzes resumes for technology related jobs, providing personalized eligibility and compatibility assessments and improvement suggestions for undergraduate students seeking for internship and new grad roles.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **React**: Frontend framework
+- **Next.js**: React framework for server-side rendering
+- **Pyodide**: Python in the browser
+- **CSS Modules**: For styling components
+- **Cerebras API (Llama3 model)**: AI API for generating personalized feedback recommendations based on Large Language Models (LLMs)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/hiepnguyenduc2005/resumate.git
+   ```
+2. Navigate to the project directory:
+    ```bash
+    cd resumate
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+4. Run the development server:
+    ```bash
+    npm run dev
+    ```
 
-## Learn More
+## Usage
+1. Open your browser and navigate to http://localhost:3000.
+2. Follow the on-screen instructions to receive feedback on your resume.
 
-To learn more about Next.js, take a look at the following resources:
+## Team Members
+- Member 1: [Khanh Le](https://github.com/khanhhlee05)
+- Member 2: [Hiep (Roger) Nguyen](https://github.com/hiepnguyenduc2005/)
+- Member 3: [James Vo](https://github.com/jamesvo2103)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
+Copyright [2024] [Khanh Le, Hiep (Roger) Nguyen, James Vo]
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-## Deploy on Vercel
+    http://www.apache.org/licenses/LICENSE-2.0
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
