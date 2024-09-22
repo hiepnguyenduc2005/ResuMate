@@ -241,7 +241,7 @@ export default function Home() {
               {!processed ? ( 
                 <>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <Process generate={generate} />
+                  <Process generate={generate} resumeText={resumeText}/>
                 </>        
               ): null}
             </form>

@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './components.module.css';
 
-export default function Process({generate}) {
+export default function Process({resumeText, generate}) {
     
-    const handleClick = async () => {
-        generate();       
+    const handleClick = () => {
+        if (resumeText){
+            generate(); 
+        }      
     };
     
 
