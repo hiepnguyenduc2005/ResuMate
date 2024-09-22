@@ -1,6 +1,8 @@
 # ResuMate
 
-ResuMate is a web application designed to help users create and manage resumes efficiently.
+![cat](https://github.com/user-attachments/assets/08be0fbe-c5d7-492e-b0bd-260a97eb73fe)
+
+ResuMate is an AI-powered web application that analyzes resumes for technology related jobs, providing personalized eligibility, compatibility assessments and improvement suggestions for undergraduate students seeking for internship and new grad roles.
 
 ## Technologies Used
 
@@ -30,7 +32,7 @@ ResuMate is a web application designed to help users create and manage resumes e
 
 ## Usage
 1. Open your browser and navigate to http://localhost:3000.
-2. Follow the on-screen instructions to create and manage your resume.
+2. Follow the on-screen instructions to receive feedback on your resume.
 
 ## Team Members
 - Member 1: [Khanh Le](https://github.com/khanhhlee05)
