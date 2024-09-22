@@ -32,9 +32,9 @@ const theme = createTheme({
   },
 })
 
-export default function Chatbot({chatbot, setChatbot, myPrompt, feedback}) {
+export default function Chatbot({ chatbot, setChatbot, myPrompt, feedback }) {
   const [messages, setMessages] = useState([
-   {role: 'system', content: myPrompt + feedback},
+    { role: 'system', content: myPrompt + feedback },
     {
       role: 'assistant',
       content: "Hey there! I'm your ResuMate. It looks like you've just received my assessment of your resume. I hope it was helpful! Is there anything else I can assist you with?",
@@ -114,12 +114,12 @@ export default function Chatbot({chatbot, setChatbot, myPrompt, feedback}) {
   }, [messages])
 
   return (
-    
+
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box
         width="100%"
-        height="100%"
+
         display="flex"
         flexDirection="column"
         justifyContent="center"
@@ -181,8 +181,19 @@ export default function Chatbot({chatbot, setChatbot, myPrompt, feedback}) {
               onKeyPress={handleKeyPress}
               disabled={isLoading}
               variant="outlined"
-              sx={{ bgcolor: 'background.paper', borderRadius: 1 }}
+              sx={{
+                bgcolor: 'background.paper',
+                borderRadius: 1,
+                input: { color: 'black' }, // Sets input text color to black
+                label: { color: 'black' }, // Optional: Sets label color to black
+              }}
+              InputProps={{
+                style: {
+                  color: 'black', // Ensures input text color is black
+                },
+              }}
             />
+
             <Button
               variant="contained"
               onClick={sendMessage}
