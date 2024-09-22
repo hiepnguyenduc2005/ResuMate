@@ -24,7 +24,6 @@ export default function Home() {
   const [feedback, setFeedback] = useState('');
   const [chatbot, setChatbot] = useState('');
 
-
   const [pyodide, setPyodide] = useState(null);
   const [resumeText, setResumeText] = useState('');
 
@@ -109,9 +108,46 @@ export default function Home() {
       .replace(/\n/g, '<br />');
   };
 
+  const validateForm = () => {
+    let missingFields = [];
+
+    if (!jobMeta.jobTitle) {
+      missingFields.push("Job Title");
+    }
+    if (!jobMeta.jobType) {
+      missingFields.push("Job Type");
+    }
+    if (!studentMeta.gradYear) {
+      missingFields.push("Graduation Month/Year");
+    }
+    if (!studentMeta.major) {
+      missingFields.push("Major");
+    }
+    if (!resume) {
+      missingFields.push("Resume");
+    }
+    if (!jobDes) {
+      missingFields.push("Job Description");
+    }
+
+    // If there are missing fields, show an alert
+    if (missingFields.length > 0) {
+      alert("Please fill out the following required fields: \n" + missingFields.join(", "));
+      return false; // Validation failed
+    }
+
+    return true; // Validation passed
+};
+
+
+
+
   const generate = async () => {
+    if (!validateForm()) return;
     try {
       runPython();
+      setProcessed(true);
+      setFeedback("Processing...");
       let user_data = "1. Here is the personal information of the applicant " + JSON.stringify(studentMeta);
       let job_data = "2. Here is the job information:\nTitle: " + jobMeta.jobTitle + "\nDetailed information: " + JSON.stringify(jobMeta) + "\n and " + jobDes;
       let job_criteria = "3. Here is the job criteria: " + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
@@ -165,7 +201,7 @@ export default function Home() {
         </div>
         ) : (
           <div className={styles.row0}>
-            <Process handleProcessed={setProcessed} generate={generate} setFeedback={setFeedback} setResume={setResume}/>
+            <Process generate={generate}/>
           </div>
         )}
       </main>

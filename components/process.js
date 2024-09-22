@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './components.module.css';
 
-export default function Process({handleProcessed, generate, setFeedback}) {
+export default function Process({generate}) {
     
     const handleClick = async () => {
-        handleProcessed(true);
-        setFeedback("Processing...");
         generate();       
     };
     
