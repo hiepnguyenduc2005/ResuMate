@@ -10,7 +10,7 @@ import Chatbot from "../components/chatbot.js";
 import Reset from "../components/reset.js";
 import Process from "../components/process.js";
 import React from "react";
-import Image from 'next/image';
+// import Image from 'next/image';
 
 
 import {ThemeProvider, createTheme, CssBaseline} from '@mui/material';
@@ -174,7 +174,6 @@ export default function Home() {
 
 
 
-
   const generate = async () => {
     if (!validateForm()) return;
     try {
@@ -214,7 +213,6 @@ export default function Home() {
       console.error("Error during API call:", error.message);
     }
   };
-
 
   return (
     <div className={styles.page}>

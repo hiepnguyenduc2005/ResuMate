@@ -78,11 +78,12 @@ export default function Chatbot({ chatbot, setChatbot, myPrompt, feedback, forma
   const messagesEndRef = useRef(null)
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
   }
 
   useEffect(() => {
     scrollToBottom()
+    // window.scrollBy(0, 20)
   }, [messages])
 
   return (
