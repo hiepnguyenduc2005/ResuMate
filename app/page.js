@@ -190,7 +190,7 @@ export default function Home() {
   
       // console.log(jobMeta.jobType)
       // console.log(jobCrit)
-      console.log(newPrompt);
+      // console.log(newPrompt);
   
       const response = await fetch("api/response", {
         method: "POST",
