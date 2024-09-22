@@ -7,6 +7,7 @@ import JobDes from "../components/job_des.js";
 import Resume from "../components/resume.js";
 import Feedback from "../components/feedback.js";
 import Chatbot from "../components/chatbot.js";
+import Reset from "../components/reset.js";
 import Process from "../components/process.js";
 import React from "react";
 
@@ -195,6 +196,11 @@ export default function Home() {
           <JobDes jobDes={jobDes} setJobDes={setJobDes} />
           <Resume resume={resume} setResume={setResume} setProcessed={setProcessed} pyodide={pyodide} runPython={runPython}/>
         </div>
+
+        <div className={styles.row0}>
+          <Reset setJobMeta={setJobMeta} setProcessed={setProcessed} setStudentMeta={setStudentMeta}
+            setJobDes={setJobDes} setResume={setResume} setFeedback={setFeedback} setMyPrompt={setMyPrompt} />
+        </div>
         
         {processed ? (
         <div className={styles.row}>
@@ -203,7 +209,7 @@ export default function Home() {
         </div>
         ) : (
           <div className={styles.row0}>
-            <Process generate={generate}/>
+            <Process generate={generate} />
           </div>
         )}
       </main>
