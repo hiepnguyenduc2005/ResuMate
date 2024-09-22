@@ -10,6 +10,8 @@ import Chatbot from "../components/chatbot.js";
 import Reset from "../components/reset.js";
 import Process from "../components/process.js";
 import React from "react";
+import Image from 'next/image';
+
 
 import {ThemeProvider, createTheme, CssBaseline} from '@mui/material';
 import { useState, useEffect } from "react";
@@ -219,8 +221,11 @@ export default function Home() {
       <main className={styles.main}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <h1 className={styles.h1}>ResuMate</h1>
-          
+          <h1 className={styles.h1}>Resu<p className={styles.title}>Mate</p></h1>
+          {/* <div className={styles.row0}>
+            <Image src="https://imgur.com/a/OlNsBYh.png" alt="ResuMate" width={200} height={200} />
+          </div> */}
+      
           <div className={styles.row}>
             <JobMeta jobMeta={jobMeta} setJobMeta={setJobMeta} />
             <StudentMeta studentMeta={studentMeta} setStudentMeta={setStudentMeta} />

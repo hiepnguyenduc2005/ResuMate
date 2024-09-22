@@ -166,7 +166,15 @@ a.secondary {
 }
 
 .h1 {
-  text-align: center;
+  font-size: 4rem;
+  display: flex;
+  align-self: center;
+}
+
+.title {
+  color: #cccccc68;
+  -webkit-text-stroke: 1px #fff; 
+
 }
 
 .row {
@@ -189,3 +197,8 @@ a.secondary {
   white-space: nowrap;
 }
 
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: 1fr; /* Change to one column */
+  }
+}

@@ -6,7 +6,7 @@
 .form input[type="text"],
 .form select,
 .form textarea {
-  border: 1px solid #cccccc68;;
+  border: 1px solid #cccccc68;
   border-radius: 4px;
   padding: 10px;
   width: 100%;
