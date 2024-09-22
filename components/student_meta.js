@@ -15,7 +15,7 @@ export default function StudentMeta({studentMeta, setStudentMeta}) {
         <h2>Applicant Summary</h2>
         <br/>
         <form className={styles.form}>
-            <input type="text" name="gradYear" placeholder="Graduation Year" value={studentMeta.gradYear} onChange={handleChange}/>
+            <input type="text" name="gradYear" placeholder="Graduation Month/Year (format: mm/yyyy)" value={studentMeta.gradYear} onChange={handleChange}/>
             <br/>
             <input type="text" name="major" placeholder="Major" value={studentMeta.major} onChange={handleChange}/>
             <br/>

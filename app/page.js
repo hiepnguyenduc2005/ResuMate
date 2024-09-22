@@ -14,7 +14,6 @@ import { useState, useEffect } from "react";
 
 import jobCrit from "../mock_db/job_title.json"
 
-
 export default function Home() {
   const [processed, setProcessed] = useState(false);
   const [jobMeta, setJobMeta] = useState({'jobTitle': '', 'jobType': ''});
@@ -60,26 +59,22 @@ export default function Home() {
         }
       };
       reader.onerror = () => reject(reader.error);
-      reader.readAsArrayBuffer(file); // Read the file as an array buffer (binary data)
+      reader.readAsArrayBuffer(file); 
     });
   };
 
-  // Run Python Code
   const runPython = async () => {
     if (pyodide) {
       try {
-        // Ensure Pyodide packages are loaded
         await pyodide.loadPackage(['micropip']);
         await pyodide.runPythonAsync(`
           import micropip
           await micropip.install('PyPDF2')
         `);
 
-        // Write the file to Pyodide's virtual FS
         if (resume) {
           await writeFileToPyodideFS(resume);
 
-          // Process the file inside Pyodide's virtual FS
           const result = await pyodide.runPythonAsync(`
             import PyPDF2
 
@@ -109,25 +104,24 @@ export default function Home() {
   };
 
   const formatData = (rawFeedback) => {
-    // Simple formatting example - you can improve it based on your needs
     return rawFeedback
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
-      .replace(/\n/g, '<br />'); // Line breaks
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') 
+      .replace(/\n/g, '<br />');
   };
 
   const generate = async () => {
     try {
-  
-      let user_data = "Here is the biographical information of the user " + JSON.stringify(studentMeta);
-      let job_data = "Here is the job information " + JSON.stringify(jobMeta) + "\n and " + jobDes;
-      let job_criteria = "Here is the job criteria: " + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
-      let resume_data = "Resume data: " + resume.name;
+      runPython();
+      let user_data = "1. Here is the personal information of the applicant " + JSON.stringify(studentMeta);
+      let job_data = "2. Here is the job information:\nTitle: " + jobMeta.jobTitle + "\nDetailed information: " + JSON.stringify(jobMeta) + "\n and " + jobDes;
+      let job_criteria = "3. Here is the job criteria: " + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
+      let resume_data = "4. Here is the applicant's resume data: " + resumeText;
     
-      const myPrompt = `${user_data}\n${job_data}\n${job_criteria}\n${resume_data}`;
+      const myPrompt = `${user_data}\n\n${job_data}\n\n${job_criteria}\n\n${resume_data}`;
   
       // console.log(jobMeta.jobType)
       // console.log(jobCrit)
-      // console.log("Generated Prompt:", myPrompt);
+      console.log(myPrompt);
   
       const response = await fetch("api/response", {
         method: "POST",
@@ -161,7 +155,7 @@ export default function Home() {
         </div>
         <div className={styles.row}>
           <JobDes jobDes={jobDes} setJobDes={setJobDes} />
-          <Resume resume={resume} setResume={setResume} setProcessed={setProcessed} pyodide={pyodide} />
+          <Resume resume={resume} setResume={setResume} setProcessed={setProcessed} pyodide={pyodide} runPython={runPython}/>
         </div>
         
         {processed ? (
@@ -171,7 +165,7 @@ export default function Home() {
         </div>
         ) : (
           <div className={styles.row0}>
-            <Process handleProcessed={setProcessed} runPython={runPython} generate={generate}/>
+            <Process handleProcessed={setProcessed} generate={generate} setFeedback={setFeedback} setResume={setResume}/>
           </div>
         )}
       </main>

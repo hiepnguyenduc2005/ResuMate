@@ -1,12 +1,19 @@
 import React from 'react';
+import { useEffect } from 'react';
 import styles from './components.module.css';
 
-export default function Resume({ resume, setResume, setProcessed, pyodide }) {
+export default function Resume({ resume, setResume, setProcessed, pyodide, runPython }) {
 
-  const handleChange = (e) => {
-    setResume(e.target.files[0]);
+  const handleChange = async (e) => {
+    await setResume(e.target.files[0]);
     setProcessed(false);
   };
+
+  useEffect(() => {
+    if (resume) {
+        runPython();
+    }
+}, [resume]);
 
   return (
     <div>
