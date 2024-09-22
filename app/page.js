@@ -23,6 +23,7 @@ export default function Home() {
   const [resume, setResume] = useState(null);
   const [feedback, setFeedback] = useState('');
   const [chatbot, setChatbot] = useState('');
+  const [myPrompt, setMyPrompt] = useState('');
 
 
   const [pyodide, setPyodide] = useState(null);
@@ -117,7 +118,7 @@ export default function Home() {
       let job_criteria = "3. Here is the job criteria: " + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
       let resume_data = "4. Here is the applicant's resume data: " + resumeText;
     
-      const myPrompt = `${user_data}\n\n${job_data}\n\n${job_criteria}\n\n${resume_data}`;
+      setMyPrompt(`${user_data}\n\n${job_data}\n\n${job_criteria}\n\n${resume_data}`);
   
       // console.log(jobMeta.jobType)
       // console.log(jobCrit)
@@ -161,7 +162,7 @@ export default function Home() {
         {processed ? (
         <div className={styles.row}>
           <Feedback feedback={feedback} setFeedback={setFeedback}/>
-          <Chatbot chatbot={chatbot} setChatbot={setChatbot} />
+          <Chatbot chatbot={chatbot} setChatbot={setChatbot} myPrompt={myPrompt} feedback={feedback}/>
         </div>
         ) : (
           <div className={styles.row0}>

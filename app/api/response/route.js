@@ -69,7 +69,7 @@ b. Keyword Matchings and Missing:
 • Missing Keywords: [List all missing keywords from the resume]
 c. Strengths:
 • [Bullet point list of matching elements in the resume]
-d. Areas for Improvement:
+d. Areas for Improvement (at least 4-5 bullet points):
 • [Bullet point list of suggestions for enhancement]
 3. Content Assessment (Errors and Corrections):
 • [List any mistakes and how to fix them]
