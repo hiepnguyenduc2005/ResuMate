@@ -1,38 +1,10 @@
 "use client"
 import { Box, Button, Stack, TextField, ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import { useState, useRef, useEffect } from 'react'
-import ReactMarkdown from 'react-markdown'
+// import ReactMarkdown from 'react-markdown'
+import styles from './components.module.css'
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#000000', // black color for primary
-    },
-    secondary: {
-      main: '#FFFFFF', // white color for secondary
-    },
-    background: {
-      default: '#000000', // black background
-      paper: '#FFFFFF', // white background for boxes
-    },
-    text: {
-      primary: '#FFFFFF', // white text
-      secondary: '#000000', // black text for contrast
-    },
-  },
-  components: {
-    MuiBox: {
-      styleOverrides: {
-        root: {
-          borderRadius: '8px',
-          boxShadow: '0 4px 8px rgba(255, 255, 255, 0.1)', // adjust shadow for better contrast in black and white
-        },
-      },
-    },
-  },
-})
-
-export default function Chatbot({ chatbot, setChatbot, myPrompt, feedback }) {
+export default function Chatbot({ chatbot, setChatbot, myPrompt, feedback, formatData }) {
   const [messages, setMessages] = useState([
     { role: 'system', content: myPrompt + feedback },
     {
@@ -115,21 +87,19 @@ export default function Chatbot({ chatbot, setChatbot, myPrompt, feedback }) {
 
   return (
 
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
       <Box
         width="100%"
-
         display="flex"
         flexDirection="column"
-        justifyContent="center"
+        justifyContent="top"
         alignItems="center"
         bgcolor="background.default"
       >
-        <h2 style={{ color: theme.palette.text.primary }}>Your ResuMate</h2>
+        <h2>Consultant from ResuMate</h2>
+        <br/>
         <Stack
           direction={'column'}
-          width="500px"
+          width="80%"
           height="700px"
           bgcolor="background.paper"
           border="1px solid"
@@ -166,7 +136,8 @@ export default function Chatbot({ chatbot, setChatbot, myPrompt, feedback }) {
                   boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
                   textAlign="left"
                 >
-                  <ReactMarkdown>{message.content}</ReactMarkdown>
+                  {/* <ReactMarkdown>{message.content}</ReactMarkdown> */}
+                  <p dangerouslySetInnerHTML={{ __html: formatData(message.content)} } className={styles.p}></p>
                 </Box>
               </Box>
             ))}
@@ -205,6 +176,5 @@ export default function Chatbot({ chatbot, setChatbot, myPrompt, feedback }) {
           </Stack>
         </Stack>
       </Box>
-    </ThemeProvider>
   )
 }

@@ -11,9 +11,38 @@ import Reset from "../components/reset.js";
 import Process from "../components/process.js";
 import React from "react";
 
+import {ThemeProvider, createTheme, CssBaseline} from '@mui/material';
 import { useState, useEffect } from "react";
-
 import jobCrit from "../mock_db/job_title.json"
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#000000', // black color for primary
+    },
+    secondary: {
+      main: '#FFFFFF', // white color for secondary
+    },
+    background: {
+      default: '#000000', // black background
+      paper: '#FFFFFF', // white background for boxes
+    },
+    text: {
+      primary: '#FFFFFF', // white text
+      secondary: '#000000', // black text for contrast
+    },
+  },
+  components: {
+    MuiBox: {
+      styleOverrides: {
+        root: {
+          borderRadius: '8px',
+          boxShadow: '0 4px 8px rgba(255, 255, 255, 0.1)', // adjust shadow for better contrast in black and white
+        },
+      },
+    },
+  },
+})
 
 export default function Home() {
   const [processed, setProcessed] = useState(false);
@@ -176,6 +205,7 @@ export default function Home() {
       
       const data = await response.json(); 
       setFeedback(formatData(data)); 
+      // setFeedback(data);
   
     } catch (error) {
       
@@ -187,39 +217,42 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1 className={styles.h1}>ResuMate</h1>
-        
-        <div className={styles.row}>
-          <JobMeta jobMeta={jobMeta} setJobMeta={setJobMeta} />
-          <StudentMeta studentMeta={studentMeta} setStudentMeta={setStudentMeta} />
-        </div>
-        <div className={styles.row}>
-          <JobDes jobDes={jobDes} setJobDes={setJobDes} />
-          <Resume resume={resume} setResume={setResume} setProcessed={setProcessed} pyodide={pyodide} runPython={runPython}/>
-        </div>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <h1 className={styles.h1}>ResuMate</h1>
+          
+          <div className={styles.row}>
+            <JobMeta jobMeta={jobMeta} setJobMeta={setJobMeta} />
+            <StudentMeta studentMeta={studentMeta} setStudentMeta={setStudentMeta} />
+          </div>
+          <div className={styles.row}>
+            <JobDes jobDes={jobDes} setJobDes={setJobDes} />
+            <Resume resume={resume} setResume={setResume} setProcessed={setProcessed} pyodide={pyodide} runPython={runPython}/>
+          </div>
 
-        <div className={styles.row0}>
-          <form className={styles.form}>
-            <Reset setJobMeta={setJobMeta} setProcessed={setProcessed} setStudentMeta={setStudentMeta}
-              setJobDes={setJobDes} setResume={setResume} setFeedback={setFeedback} setMyPrompt={setMyPrompt} />
-              
-            {!processed ? ( 
-              <>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Process generate={generate} />
-              </>        
-            ): null}
-          </form>
-        </div>
-        
-        {processed ? (
-        <div className={styles.row}>
-          <Feedback feedback={feedback} setFeedback={setFeedback}/>
-          <Chatbot chatbot={chatbot} setChatbot={setChatbot} myPrompt={myPrompt} feedback={feedback}/>
-        </div>
-        ) : (
-          null
-        )}
+          <div className={styles.row0}>
+            <form className={styles.form}>
+              <Reset setJobMeta={setJobMeta} setProcessed={setProcessed} setStudentMeta={setStudentMeta}
+                setJobDes={setJobDes} setResume={setResume} setFeedback={setFeedback} setMyPrompt={setMyPrompt} />
+                
+              {!processed ? ( 
+                <>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <Process generate={generate} />
+                </>        
+              ): null}
+            </form>
+          </div>
+          
+          {processed ? (
+          <div className={styles.row}>
+            <Feedback feedback={feedback} setFeedback={setFeedback}/>
+            <Chatbot chatbot={chatbot} setChatbot={setChatbot} myPrompt={myPrompt} feedback={feedback} formatData={formatData}/>
+          </div>
+          ) : (
+            null
+          )}
+        </ThemeProvider>
       </main>
       <footer className={styles.footer}>
       </footer>

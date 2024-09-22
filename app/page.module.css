@@ -180,6 +180,7 @@ a.secondary {
   display: grid;
   width: 100%;
   text-align: center;
+  justify-content: top;
 }
 
 .form {
