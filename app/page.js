@@ -182,10 +182,12 @@ export default function Home() {
       setFeedback("Processing...");
       let user_data = "1. Here is the personal information of the applicant " + JSON.stringify(studentMeta);
       let job_data = "2. Here is the job information:\nTitle: " + jobMeta.jobTitle + "\nDetailed information: " + JSON.stringify(jobMeta) + "\n and " + jobDes;
-      let job_criteria = "3. Here is the job criteria: " + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
-      let resume_data = "4. Here is the applicant's resume data: " + resumeText;
+      let resume_data = "3. Here is the applicant's resume data: " + resumeText;
+      let job_criteria = "4. Here is the job criteria: " + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
+
       
-      const newPrompt = `${user_data}\n\n${job_data}\n\n${job_criteria}\n\n${resume_data}`
+      // const newPrompt = `${user_data}\n\n${job_data}\n\n${resume_data}\n\n${job_criteria}`
+      const newPrompt = `${user_data}\n\n${job_data}\n\n${resume_data}`
       setMyPrompt(newPrompt);
   
       // console.log(jobMeta.jobType)
