@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './components.module.css';
 
-export default function JobMeta({jobMeta, setJobMeta}) {
+export default function JobMeta({jobMeta, setJobMeta, setProcessed}) {
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -9,6 +9,7 @@ export default function JobMeta({jobMeta, setJobMeta}) {
             ...prevState,
             [name]: value
         }));
+        setProcessed(false);
     }
 
     return (

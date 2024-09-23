@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from './components.module.css';
 
-export default function StudentMeta({studentMeta, setStudentMeta}) {
+export default function StudentMeta({studentMeta, setStudentMeta, setProcessed}) {
     const handleChange = (e) => {
         const {name, value} = e.target;
         setStudentMeta(prevState => ({
             ...prevState,
             [name]: value
         }));
+        setProcessed(false);
     }
 
     return (

@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './components.module.css';
 
-export default function JobDes({jobDes, setJobDes}) {
+export default function JobDes({jobDes, setJobDes, setProcessed}) {
 
     const handleChange = (e) => {
         setJobDes(e.target.value);
+        setProcessed(false);
     }
 
     return (

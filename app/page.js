@@ -227,11 +227,11 @@ export default function Home() {
           </div> */}
       
           <div className={styles.row}>
-            <JobMeta jobMeta={jobMeta} setJobMeta={setJobMeta} />
-            <StudentMeta studentMeta={studentMeta} setStudentMeta={setStudentMeta} />
+            <JobMeta jobMeta={jobMeta} setJobMeta={setJobMeta} setProcessed={setProcessed} />
+            <StudentMeta studentMeta={studentMeta} setStudentMeta={setStudentMeta} setProcessed={setProcessed} />
           </div>
           <div className={styles.row}>
-            <JobDes jobDes={jobDes} setJobDes={setJobDes} />
+            <JobDes jobDes={jobDes} setJobDes={setJobDes} setProcessed={setProcessed} />
             <Resume resume={resume} setResume={setResume} setProcessed={setProcessed} pyodide={pyodide} runPython={runPython}/>
           </div>
 
