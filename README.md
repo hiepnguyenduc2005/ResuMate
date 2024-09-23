@@ -35,6 +35,9 @@ ResuMate is an AI-powered web application that analyzes resumes for technology r
 1. Open your browser and navigate to http://localhost:3000.
 2. Follow the on-screen instructions to receive feedback on your resume.
 
+## DevPost Submission
+[PennApps](https://devpost.com/software/resumate-m5iz4k)
+
 ## Team Members
 - Member 1: [Khanh Le](https://github.com/khanhhlee05)
 - Member 2: [Hiep (Roger) Nguyen](https://github.com/hiepnguyenduc2005/)
