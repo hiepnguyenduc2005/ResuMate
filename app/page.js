@@ -180,10 +180,10 @@ export default function Home() {
       runPython();
       setProcessed(true);
       setFeedback("Processing...");
-      let user_data = "1. Here is the personal information of the applicant " + JSON.stringify(studentMeta);
-      let job_data = "2. Here is the job information:\nTitle: " + jobMeta.jobTitle + "\nDetailed information: " + JSON.stringify(jobMeta) + "\n and " + jobDes;
-      let resume_data = "3. Here is the applicant's resume data: " + resumeText;
-      let job_criteria = "4. Here is the job criteria: " + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
+      let user_data = "1. Here is the personal information of the applicant\n" + JSON.stringify(studentMeta);
+      let job_data = "2. Here is the job information:\nTitle:\n" + JSON.stringify(jobMeta) + "\nDetailed information:\n" + jobDes;
+      let resume_data = "3. Here is the applicant's resume data:\n" + resumeText;
+      // let job_criteria = "4. Here is the job criteria:\n" + jobCrit[jobMeta.jobType ? jobMeta.jobType : "swe"]
 
       
       // const newPrompt = `${user_data}\n\n${job_data}\n\n${resume_data}\n\n${job_criteria}`
